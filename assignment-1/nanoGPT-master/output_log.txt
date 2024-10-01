@@ -1,0 +1,704 @@
+(64, 12, 4, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 40.14 seconds
+step 2000: train loss 1.7640, val loss 1.8925
+------------------------------------
+(64, 12, 4, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 42.50 seconds
+step 2000: train loss 2.0483, val loss 2.0839
+------------------------------------
+(64, 12, 4, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 40.82 seconds
+step 2000: train loss 1.5592, val loss 1.7578
+------------------------------------
+(64, 12, 4, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 42.77 seconds
+step 2000: train loss 1.7327, val loss 1.9044
+------------------------------------
+(64, 12, 4, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 40.41 seconds
+step 2000: train loss 1.7818, val loss 1.9097
+------------------------------------
+(64, 12, 4, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 42.24 seconds
+step 2000: train loss 2.0263, val loss 2.0716
+------------------------------------
+(64, 12, 4, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 47.06 seconds
+step 2000: train loss 1.5636, val loss 1.7753
+------------------------------------
+(64, 12, 4, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 54.47 seconds
+step 2000: train loss 1.7344, val loss 1.8942
+------------------------------------
+(64, 12, 16, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 119.83 seconds
+step 2000: train loss 1.7336, val loss 1.8807
+------------------------------------
+(64, 12, 16, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 135.54 seconds
+step 2000: train loss 1.9295, val loss 2.0165
+------------------------------------
+(64, 12, 16, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 186.41 seconds
+step 2000: train loss 1.6630, val loss 1.7985
+------------------------------------
+(64, 12, 16, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 195.94 seconds
+step 2000: train loss 1.8155, val loss 1.9114
+------------------------------------
+(64, 12, 16, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 150.72 seconds
+step 2000: train loss 1.7207, val loss 1.8852
+------------------------------------
+(64, 12, 16, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 164.10 seconds
+step 2000: train loss 1.9093, val loss 1.9971
+------------------------------------
+(64, 12, 16, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 221.77 seconds
+step 2000: train loss 1.6318, val loss 1.7677
+------------------------------------
+(64, 12, 16, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 243.73 seconds
+step 2000: train loss 1.7691, val loss 1.8719
+------------------------------------
+(64, 32, 4, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 52.57 seconds
+step 2000: train loss 1.5508, val loss 1.7246
+------------------------------------
+(64, 32, 4, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 56.03 seconds
+step 2000: train loss 1.8482, val loss 1.9605
+------------------------------------
+(64, 32, 4, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 107.18 seconds
+step 2000: train loss 1.3808, val loss 1.5632
+------------------------------------
+(64, 32, 4, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 117.17 seconds
+step 2000: train loss 1.5459, val loss 1.7184
+------------------------------------
+(64, 32, 4, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 82.76 seconds
+step 2000: train loss 1.5495, val loss 1.7267
+------------------------------------
+(64, 32, 4, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 94.61 seconds
+step 2000: train loss 1.8165, val loss 1.9322
+------------------------------------
+(64, 32, 4, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 127.05 seconds
+step 2000: train loss 1.3860, val loss 1.5710
+------------------------------------
+(64, 32, 4, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 237.76 seconds
+step 2000: train loss 1.5314, val loss 1.6973
+------------------------------------
+(64, 32, 16, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 302.70 seconds
+step 2000: train loss 1.4944, val loss 1.6777
+------------------------------------
+(64, 32, 16, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 334.92 seconds
+step 2000: train loss 1.6739, val loss 1.8180
+------------------------------------
+(64, 32, 16, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 676.09 seconds
+step 2000: train loss 1.3846, val loss 1.6016
+------------------------------------
+(64, 32, 16, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 712.92 seconds
+step 2000: train loss 1.4907, val loss 1.6924
+------------------------------------
+(64, 32, 16, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 418.77 seconds
+step 2000: train loss 1.4908, val loss 1.6739
+------------------------------------
+(64, 32, 16, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 474.59 seconds
+step 2000: train loss 1.6455, val loss 1.8031
+------------------------------------
+(64, 32, 16, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 633.94 seconds
+step 2000: train loss 1.3594, val loss 1.5930
+------------------------------------
+(64, 32, 16, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 64
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 686.93 seconds
+step 2000: train loss 1.4666, val loss 1.6710
+------------------------------------
+(128, 12, 4, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 50.25 seconds
+step 2000: train loss 1.6775, val loss 1.8395
+------------------------------------
+(128, 12, 4, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 54.84 seconds
+step 2000: train loss 2.0439, val loss 2.1061
+------------------------------------
+(128, 12, 4, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 96.68 seconds
+step 2000: train loss 1.4720, val loss 1.6471
+------------------------------------
+(128, 12, 4, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 107.60 seconds
+step 2000: train loss 1.6686, val loss 1.8134
+------------------------------------
+(128, 12, 4, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 89.54 seconds
+step 2000: train loss 1.6786, val loss 1.8436
+------------------------------------
+(128, 12, 4, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 106.31 seconds
+step 2000: train loss 1.9958, val loss 2.0642
+------------------------------------
+(128, 12, 4, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 132.74 seconds
+step 2000: train loss 1.5091, val loss 1.6672
+------------------------------------
+(128, 12, 4, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 150.79 seconds
+step 2000: train loss 1.7379, val loss 1.8704
+------------------------------------
+(128, 12, 16, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 186.67 seconds
+step 2000: train loss 1.6215, val loss 1.7683
+------------------------------------
+(128, 12, 16, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 212.19 seconds
+step 2000: train loss 1.8628, val loss 1.9433
+------------------------------------
+(128, 12, 16, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 358.35 seconds
+step 2000: train loss 1.4995, val loss 1.6921
+------------------------------------
+(128, 12, 16, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 372.05 seconds
+step 2000: train loss 1.6348, val loss 1.7885
+------------------------------------
+(128, 12, 16, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 313.76 seconds
+step 2000: train loss 1.6151, val loss 1.7634
+------------------------------------
+(128, 12, 16, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 382.36 seconds
+step 2000: train loss 1.8377, val loss 1.9189
+------------------------------------
+(128, 12, 16, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 477.97 seconds
+step 2000: train loss 1.4453, val loss 1.6439
+------------------------------------
+(128, 12, 16, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 12
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 573.50 seconds
+step 2000: train loss 1.6017, val loss 1.7589
+------------------------------------
+(128, 32, 4, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 105.01 seconds
+step 2000: train loss 1.4748, val loss 1.6406
+------------------------------------
+(128, 32, 4, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 119.14 seconds
+step 2000: train loss 1.7799, val loss 1.8925
+------------------------------------
+(128, 32, 4, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 221.26 seconds
+step 2000: train loss 1.2478, val loss 1.5071
+------------------------------------
+(128, 32, 4, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 246.51 seconds
+step 2000: train loss 1.4440, val loss 1.6353
+------------------------------------
+(128, 32, 4, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 206.56 seconds
+step 2000: train loss 1.4628, val loss 1.6423
+------------------------------------
+(128, 32, 4, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 241.82 seconds
+step 2000: train loss 1.7577, val loss 1.8740
+------------------------------------
+(128, 32, 4, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 307.11 seconds
+step 2000: train loss 1.2826, val loss 1.5272
+------------------------------------
+(128, 32, 4, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 4
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 358.50 seconds
+step 2000: train loss 1.4331, val loss 1.6213
+------------------------------------
+(128, 32, 16, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 516.91 seconds
+step 2000: train loss 1.4002, val loss 1.6075
+------------------------------------
+(128, 32, 16, 4, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 558.64 seconds
+step 2000: train loss 1.5835, val loss 1.7362
+------------------------------------
+(128, 32, 16, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 1036.08 seconds
+step 2000: train loss 1.2287, val loss 1.5238
+------------------------------------
+(128, 32, 16, 4, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 4
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 1002.41 seconds
+step 2000: train loss 1.3743, val loss 1.5949
+------------------------------------
+(128, 32, 16, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.0
+Time Taken: 768.79 seconds
+step 2000: train loss 1.4023, val loss 1.6069
+------------------------------------
+(128, 32, 16, 16, 128)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 128
+Dropout: 0.2
+Time Taken: 960.30 seconds
+step 2000: train loss 1.5643, val loss 1.7303
+------------------------------------
+(128, 32, 16, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.0
+Time Taken: 1198.74 seconds
+step 2000: train loss 1.2031, val loss 1.5486
+------------------------------------
+(128, 32, 16, 16, 256)
+=== Hyperparameter Configuration ===
+Block Size: 128
+Batch Size: 32
+Number of Layers: 16
+Number of Heads: 16
+Embedding Size: 256
+Dropout: 0.2
+Time Taken: 1401.47 seconds
+step 2000: train loss 1.3415, val loss 1.5691
+------------------------------------
