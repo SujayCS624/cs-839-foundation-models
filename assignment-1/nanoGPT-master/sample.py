@@ -7,6 +7,13 @@ from contextlib import nullcontext
 import torch
 import tiktoken
 from model import GPTConfig, GPT
+import nltk
+from nltk.translate.bleu_score import sentence_bleu
+from nltk.tokenize import word_tokenize
+from nltk.translate.bleu_score import SmoothingFunction
+
+nltk.download('punkt')
+nltk.download('punkt_tab')
 
 # -----------------------------------------------------------------------------
 init_from = 'resume' # either 'resume' (from an out_dir) or a gpt2 variant (e.g. 'gpt2-xl')
@@ -81,9 +88,36 @@ start_ids = encode(start)
 x = (torch.tensor(start_ids, dtype=torch.long, device=device)[None, ...])
 
 # run generation
+samples = []
 with torch.no_grad():
     with ctx:
         for k in range(num_samples):
             y = model.generate(x, max_new_tokens, temperature=temperature, top_k=top_k)
-            print(decode(y[0].tolist()))
+            sample = decode(y[0].tolist())
+            samples.append(sample)
+            print(sample)
             print('---------------')
+
+# Self-BLEU function
+def self_bleu(samples):
+    # Tokenize the generated samples
+    tokenized_samples = [word_tokenize(sample) for sample in samples]
+    
+    # Calculate self-BLEU
+    self_bleu_scores = []
+    smoothing_function = SmoothingFunction().method4
+    for i in range(len(tokenized_samples)):
+        # Create reference (other samples) and candidate (current sample)
+        reference = [tokenized_samples[j] for j in range(len(tokenized_samples)) if j != i]
+        candidate = tokenized_samples[i]
+        
+        # Calculate BLEU score for the candidate against the references
+        score = sentence_bleu(reference, candidate, smoothing_function=smoothing_function)
+        self_bleu_scores.append(score)
+    
+    # Return the average self-BLEU score
+    return sum(self_bleu_scores) / len(self_bleu_scores)
+
+# Calculate and print Self-BLEU score
+self_bleu_score = self_bleu(samples)
+print(f"Self-BLEU Score: {self_bleu_score}")

@@ -10,3 +10,4 @@ __pycache__/
 input.txt
 env/
 venv/
+wot_input.txt

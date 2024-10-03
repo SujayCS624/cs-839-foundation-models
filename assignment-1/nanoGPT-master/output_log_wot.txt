@@ -1,0 +1,63 @@
+Number of Input Characters: 250
+step 2000: train loss 0.0158, val loss 9.0096
+step 2000: train perplexity 1.0159, val perplexity 8181.0661
+Self-BLEU Score: 0.04552186226519974
+------------------------------------
+Number of Input Characters: 500
+step 2000: train loss 0.0246, val loss 8.0954
+step 2000: train perplexity 1.0249, val perplexity 3279.3510
+Self-BLEU Score: 0.04552186226519974
+------------------------------------
+Number of Input Characters: 1000
+step 2000: train loss 0.0316, val loss 7.2464
+step 2000: train perplexity 1.0321, val perplexity 1403.0205
+Self-BLEU Score: 0.04552186226519974
+------------------------------------
+Number of Input Characters: 2000
+step 2000: train loss 0.0383, val loss 6.7311
+step 2000: train perplexity 1.0390, val perplexity 838.0759
+Self-BLEU Score: 0.04552186226519974
+------------------------------------
+Number of Input Characters: 4000
+step 2000: train loss 0.0467, val loss 6.1874
+step 2000: train perplexity 1.0478, val perplexity 486.5955
+Self-BLEU Score: 0.01834546797177492
+------------------------------------
+Number of Input Characters: 8000
+step 2000: train loss 0.0562, val loss 5.4323
+step 2000: train perplexity 1.0578, val perplexity 228.6639
+Self-BLEU Score: 0.023236004840229522
+------------------------------------
+Number of Input Characters: 16000
+step 2000: train loss 0.0660, val loss 4.6727
+step 2000: train perplexity 1.0683, val perplexity 106.9860
+Self-BLEU Score: 0.04544533672753504
+------------------------------------
+Number of Input Characters: 32000
+step 2000: train loss 0.0812, val loss 4.2768
+step 2000: train perplexity 1.0845, val perplexity 72.0088
+Self-BLEU Score: 0.030730373775049592
+------------------------------------
+Number of Input Characters: 64000
+step 2000: train loss 0.1060, val loss 3.8002
+step 2000: train perplexity 1.1118, val perplexity 44.7096
+Self-BLEU Score: 0.04802383537967421
+------------------------------------
+Number of Input Characters: 128000
+step 2000: train loss 0.1876, val loss 3.1067
+step 2000: train perplexity 1.2064, val perplexity 22.3482
+Self-BLEU Score: 0.10547595542290658
+------------------------------------
+Number of Input Characters: 256000
+step 2000: train loss 0.5212, val loss 2.0898
+step 2000: train perplexity 1.6840, val perplexity 8.0833
+Self-BLEU Score: 0.05253576933437707
+------------------------------------
+Number of Input Characters: 512000
+step 2000: train loss 0.9611, val loss 1.4523
+step 2000: train perplexity 2.6145, val perplexity 4.2728
+Self-BLEU Score: 0.0890743231657305
+------------------------------------
+Number of Input Characters: 1024000
+step 2000: train loss 1.0970, val loss 1.3111
+step 2000: train perplexity 2.9950, val perplexity 3.7103

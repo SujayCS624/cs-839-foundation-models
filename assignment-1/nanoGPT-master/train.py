@@ -21,6 +21,8 @@ import time
 import math
 import pickle
 from contextlib import nullcontext
+import torch.nn.functional as F
+from scipy.spatial.distance import jensenshannon
 
 import numpy as np
 import torch
@@ -111,6 +113,16 @@ device_type = 'cuda' if 'cuda' in device else 'cpu' # for later use in torch.aut
 ptdtype = {'float32': torch.float32, 'bfloat16': torch.bfloat16, 'float16': torch.float16}[dtype]
 ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
 
+
+# python data/shakespeare_char/wot_prepare.py 
+
+# python train.py config/train_shakespeare_char.py --device=mps --compile=False --eval_iters=20 --log_interval=1 --block_size=128 --batch_size=32 --n_layer=4 --n_head=4 --n_embd=256 --max_iters=4000 --lr_decay_iters=2000 --dropout=0.0 --init_from=resume --learning_rate=3e-5 --decay_lr=False --always_save_checkpoint=False
+
+
+# python data/shakespeare_char/prepare.py
+
+# python train.py config/train_shakespeare_char.py --device=mps --compile=False --eval_iters=20 --log_interval=1 --block_size=128 --batch_size=32 --n_layer=4 --n_head=4 --n_embd=256 --max_iters=2000 --lr_decay_iters=2000 --dropout=0.0
+
 # poor man's data loader
 data_dir = os.path.join('data', dataset)
 def get_batch(split):
@@ -118,8 +130,12 @@ def get_batch(split):
     # https://stackoverflow.com/questions/45132940/numpy-memmap-memory-usage-want-to-iterate-once/61472122#61472122
     if split == 'train':
         data = np.memmap(os.path.join(data_dir, 'train.bin'), dtype=np.uint16, mode='r')
+        # data = np.memmap(os.path.join(data_dir, 'wot_train.bin'), dtype=np.uint16, mode='r')
+        # data = data[:n_chars]
     else:
         data = np.memmap(os.path.join(data_dir, 'val.bin'), dtype=np.uint16, mode='r')
+        # data = np.memmap(os.path.join(data_dir, 'wot_val.bin'), dtype=np.uint16, mode='r')
+        # data = data[:n_chars]
     ix = torch.randint(len(data) - block_size, (batch_size,))
     x = torch.stack([torch.from_numpy((data[i:i+block_size]).astype(np.int64)) for i in ix])
     y = torch.stack([torch.from_numpy((data[i+1:i+1+block_size]).astype(np.int64)) for i in ix])
@@ -210,6 +226,65 @@ if compile:
 # wrap model into DDP container
 if ddp:
     model = DDP(model, device_ids=[ddp_local_rank])
+
+def compute_jsd(p, q):
+    """
+    Compute the Jensen-Shannon Divergence between two probability distributions.
+    Inputs:
+    - p: torch.Tensor of shape (batch_size, vocab_size), the predicted probabilities
+    - q: torch.Tensor of shape (batch_size, vocab_size), the true probabilities
+    Outputs:
+    - jsd: torch.Tensor of shape (batch_size,), the Jensen-Shannon divergence for each example
+    """
+    # Convert to numpy for compatibility with scipy
+    p = p.cpu().numpy()
+    q = q.cpu().numpy()
+
+    # Compute JSD using scipy's jensenshannon method
+    jsd = [jensenshannon(p[i], q[i], axis=-1)**2 for i in range(p.shape[0])]
+    
+    return torch.tensor(jsd).mean()  # Return mean JSD over the batch
+
+
+@torch.no_grad()
+def estimate_loss_perplexity_jsd():
+    out = {}
+    perplexities = {}
+    jsd_values = {}
+    model.eval()
+    for split in ['train', 'val']:
+        losses = torch.zeros(eval_iters)
+        jsd_scores = torch.zeros(eval_iters)
+        for k in range(eval_iters):
+            X, Y = get_batch(split)
+            with ctx:
+                logits, loss = model(X, Y)
+            # Get probabilities by applying softmax
+            probs_pred = F.softmax(logits, dim=-1)
+
+            probs_sum = torch.sum(probs_pred, dim=-1)
+            
+            # Create true distribution (one-hot encoded)
+            Y_onehot = F.one_hot(Y, num_classes=probs_pred.size(-1)).float()
+
+            # Calculate Jensen-Shannon Divergence
+            jsd = compute_jsd(probs_pred, Y_onehot)
+            jsd_scores[k] = jsd.item()
+
+            losses[k] = loss.item()
+
+        avg_loss = losses.mean().item()  # average loss over the evaluation iterations
+        out[split] = avg_loss
+        
+        # Calculate perplexity
+        perplexity = math.exp(avg_loss)
+        perplexities[split] = perplexity
+
+        # Average JSD over the evaluation iterations
+        jsd_values[split] = jsd_scores.mean().item()
+
+    model.train()
+    return out, perplexities, jsd_values
 
 @torch.no_grad()
 def estimate_loss_and_perplexity():
@@ -308,10 +383,92 @@ while True:
     #             print(f"saving checkpoint to {out_dir}")
     #             torch.save(checkpoint, os.path.join(out_dir, 'ckpt.pt'))
 
+#     if iter_num % eval_interval == 0 and master_process:
+#         losses, perplexities = estimate_loss_and_perplexity()
+#         print(f"step {iter_num}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f}")
+#         print(f"step {iter_num}: train perplexity {perplexities['train']:.4f}, val perplexity {perplexities['val']:.4f}")
+    
+#         if wandb_log:
+#             wandb.log({
+#                 "iter": iter_num,
+#                 "train/loss": losses['train'],
+#                 "val/loss": losses['val'],
+#                 "train/perplexity": perplexities['train'],
+#                 "val/perplexity": perplexities['val'],
+#                 "lr": lr,
+#                 "mfu": running_mfu * 100,  # convert to percentage
+#             })
+
+#         if losses['val'] < best_val_loss or always_save_checkpoint:
+#             best_val_loss = losses['val']
+#             if iter_num > 0:
+#                 checkpoint = {
+#                     'model': raw_model.state_dict(),
+#                     'optimizer': optimizer.state_dict(),
+#                     'model_args': model_args,
+#                     'iter_num': iter_num,
+#                     'best_val_loss': best_val_loss,
+#                     'config': config,
+#                 }
+#                 print(f"saving checkpoint to {out_dir}")
+#                 torch.save(checkpoint, os.path.join(out_dir, 'ckpt.pt'))
+
+#     if iter_num == 0 and eval_only:
+#         break
+
+#     # forward backward update, with optional gradient accumulation to simulate larger batch size
+#     # and using the GradScaler if data type is float16
+#     for micro_step in range(gradient_accumulation_steps):
+#         if ddp:
+#             # in DDP training we only need to sync gradients at the last micro step.
+#             # the official way to do this is with model.no_sync() context manager, but
+#             # I really dislike that this bloats the code and forces us to repeat code
+#             # looking at the source of that context manager, it just toggles this variable
+#             model.require_backward_grad_sync = (micro_step == gradient_accumulation_steps - 1)
+#         with ctx:
+#             logits, loss = model(X, Y)
+#             loss = loss / gradient_accumulation_steps # scale the loss to account for gradient accumulation
+#         # immediately async prefetch next batch while model is doing the forward pass on the GPU
+#         X, Y = get_batch('train')
+#         # backward pass, with gradient scaling if training in fp16
+#         scaler.scale(loss).backward()
+#     # clip the gradient
+#     if grad_clip != 0.0:
+#         scaler.unscale_(optimizer)
+#         torch.nn.utils.clip_grad_norm_(model.parameters(), grad_clip)
+#     # step the optimizer and scaler if training in fp16
+#     scaler.step(optimizer)
+#     scaler.update()
+#     # flush the gradients as soon as we can, no need for this memory anymore
+#     optimizer.zero_grad(set_to_none=True)
+
+#     # timing and logging
+#     t1 = time.time()
+#     dt = t1 - t0
+#     t0 = t1
+#     if iter_num % log_interval == 0 and master_process:
+#         # get loss as float. note: this is a CPU-GPU sync point
+#         # scale up to undo the division above, approximating the true total loss (exact would have been a sum)
+#         lossf = loss.item() * gradient_accumulation_steps
+#         if local_iter_num >= 5: # let the training loop settle a bit
+#             mfu = raw_model.estimate_mfu(batch_size * gradient_accumulation_steps, dt)
+#             running_mfu = mfu if running_mfu == -1.0 else 0.9*running_mfu + 0.1*mfu
+#         print(f"iter {iter_num}: loss {lossf:.4f}, time {dt*1000:.2f}ms, mfu {running_mfu*100:.2f}%")
+#     iter_num += 1
+#     local_iter_num += 1
+
+#     # termination conditions
+#     if iter_num > max_iters:
+#         break
+
+# if ddp:
+#     destroy_process_group()
+
     if iter_num % eval_interval == 0 and master_process:
-        losses, perplexities = estimate_loss_and_perplexity()
+        losses, perplexities, jsd_values = estimate_loss_perplexity_jsd()
         print(f"step {iter_num}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f}")
         print(f"step {iter_num}: train perplexity {perplexities['train']:.4f}, val perplexity {perplexities['val']:.4f}")
+        print(f"step {iter_num}: train JSD {jsd_values['train']:.4f}, val JSD {jsd_values['val']:.4f}")
     
         if wandb_log:
             wandb.log({
@@ -320,6 +477,8 @@ while True:
                 "val/loss": losses['val'],
                 "train/perplexity": perplexities['train'],
                 "val/perplexity": perplexities['val'],
+                "train/jsd": jsd_values['train'],
+                "val/jsd": jsd_values['val'],
                 "lr": lr,
                 "mfu": running_mfu * 100,  # convert to percentage
             })
